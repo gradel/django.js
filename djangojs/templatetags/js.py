@@ -104,11 +104,11 @@ def verbatim(parser, token):
 
 @register.simple_tag
 def js_lib(filename):
-    return javascript('js/libs/%s' % filename)
+    return js('js/libs/%s' % filename)
 
 
 @register.simple_tag
-def javascript(filename, type='text/javascript'):
+def js(filename, type='text/javascript'):
     '''A simple shortcut to render a ``script`` tag to a static javascript file'''
     if '?' in filename and len(filename.split('?')) is 2:
         filename, params = filename.split('?')
@@ -118,21 +118,15 @@ def javascript(filename, type='text/javascript'):
 
 
 @register.simple_tag
-def js(filename, type='text/javascript'):
-    '''A simple shortcut to render a ``script`` tag to a static javascript file'''
-    return javascript(filename, type=type)
-
-
-@register.simple_tag
 def coffeescript(filename):
     '''A simple shortcut to render a ``script`` tag to a static coffeescript file'''
-    return javascript(filename, type='text/coffeescript')
+    return js(filename, type='text/coffeescript')
 
 
 @register.simple_tag
 def coffee(filename):
     '''A simple shortcut to render a ``script`` tag to a static coffeescript file'''
-    return javascript(filename, type='text/coffeescript')
+    return js(filename, type='text/coffeescript')
 
 
 @register.simple_tag
